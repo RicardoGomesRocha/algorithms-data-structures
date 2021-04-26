@@ -3,6 +3,7 @@ function anagrams(stringA, stringB) {
     const hashB = {};
     stringA = stringA.replace(/[^\w]/g, '').toLowerCase();
     stringB = stringB.replace(/[^\w]/g, '').toLowerCase();
+    if (stringA.length !== stringB.length) return false;
     for (let i = 0; i < stringA.length; i++) {
         const charA = stringA[i];
         const charB = stringB[i];
@@ -16,4 +17,17 @@ function anagrams(stringA, stringB) {
     return true;
 }
 
-module.exports = anagrams;
+function anagramsWithSort(stringA, stringB) {
+    stringA = stringA.replace(/[^\w]/g, '').toLowerCase();
+    stringB = stringB.replace(/[^\w]/g, '').toLowerCase();
+    if (stringA.length !== stringB.length) return false;
+    const sortedA = stringA.split('').sort((a, b) => a > b ? -1 : 1);
+    const sortedB = stringA.split('').sort((a, b) => a > b ? -1 : 1);
+    for (let i = 0; i < stringA.length; i++) {
+        if (sortedA[i] !== sortedB[i]) return false;
+    }
+    return true;
+}
+
+module.exports.anagrams = anagrams;
+module.exports.anagramsWithSort = anagramsWithSort;
