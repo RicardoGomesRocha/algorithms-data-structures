@@ -1,4 +1,4 @@
-function arrayChunk(array, size) {
+function anagrams(array, size) {
     const returnArray = [];
     let subArray = []
     for (let i = 0; i < array.length; i++) {
@@ -12,4 +12,4 @@ function arrayChunk(array, size) {
     return returnArray;
 }
 
-module.exports = arrayChunk;
+module.exports = anagrams;
