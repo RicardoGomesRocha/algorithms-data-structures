@@ -22,10 +22,24 @@ function fib(n) {
     return next;
 }
 
+function memoize(fn) {
+    const cache = {}
+    return function (...args) {
+        if (cache[args]) {
+            return cache[args]
+        }
+        const result = fn.apply(this, args);
+        cache[args] = result;
+        return result;
+    }
+}
+
 function fibRecursive(n) {
     if (n < 2) return n;
-    return fibRecursive(n - 1) + fibRecursive(n - 2);
+    const first = fibRecursive(n - 1);
+    const second = fibRecursive(n - 2);
+    return first + second;
 }
 
 module.exports.fib = fib;
-module.exports.fibRecursive = fibRecursive;
+module.exports.fibRecursive = memoize(fibRecursive);
