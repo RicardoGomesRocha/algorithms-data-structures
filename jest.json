@@ -1,0 +1,9 @@
+{
+    "name": "my-project",
+    "jest": {
+        "verbose": true
+    },
+    "testMatch": [
+        "**/?(*.)+(spec|test).js"
+    ]
+}
