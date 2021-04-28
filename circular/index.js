@@ -23,4 +23,4 @@ function circular(list) {
     return false;
 }
 
-module.exports.circular = circular;
+module.exports = circular;
